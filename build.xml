@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="NomDeVotreProjet" default="compile" basedir=".">
+
+    <!-- Propriétés du projet -->
+    <property name="src.dir" location="src"/>
+    <property name="build.dir" location="build"/>
+    <property name="main.class" value="Main"/>
+
+    <!-- Déclaration de la cible "init" pour créer le dossier build -->
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+    </target>
+
+    <!-- Déclaration de la cible "compile" pour compiler le code source -->
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+            <classpath>
+                <!-- Ajoutez ici d'autres dépendances si nécessaire -->
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Déclaration de la cible "run" pour exécuter le programme -->
+    <target name="run" depends="compile">
+        <java classname="${main.class}" classpath="${build.dir}">
+            <!-- Ajoutez ici d'autres options d'exécution si nécessaire -->
+        </java>
+    </target>
+
+    <!-- Déclaration de la cible par défaut -->
+    <target name="default" depends="run"/>
+
+</project>
